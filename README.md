@@ -1,0 +1,2 @@
+# Jeux-du-Serpent
+/**  * @author LANE Romuald 😎 &lt;laneromuald@gmail.com>  */  ♣ Ce Projet est un simple de jeu de serpent en javascript utilisant la balise canvas. ♣ Le jeu inclut du son lorsque le serpent consomme un fruit. ♣ La vitesse du serpent augmente lorsqu'il mange 6 fruit. ♣ Le temps d'une partie peut être évalué. ♣ Possibilité de rejouer et de mettre pause. ♣ Possibilité de visualiser le score du joeur. ♣ Les Fruits apparaîssent de façon aléatoire sur la grille. ♣ L'interface est très conviviale, de préférence sur le Navigateur Google Chrome.
