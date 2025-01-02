@@ -32,7 +32,7 @@ deplacey = 0;
 serpent = new Image();
 serpent.src = "assets/images/snake/headd.png";
 corps = new Image();
-corps.src = "assets/images/serpent/body.png";
+corps.src = "assets/images/snake/body.png";
 back = new Image();
 back.src = "assets/images/interface/back.PNG";
 
@@ -72,7 +72,7 @@ amaj = document.getElementById("avocacounter");
 mango = 0;
 mmaj = document.getElementById("mangocounter");
 scoremaj = document.getElementById("valeurscore");
-
+document.getElementById('colis').play();
 collisionbody = false;
 attenterand = 0;
 
@@ -93,12 +93,11 @@ posy = 518;
 
 // main function
 function main() {
-    //Le snake se deplace 
     snakeheadx += deplacex * largeur;
     snakeheady += deplacey * hauteur;
 
     // Game Over
-    //gameover();
+    gameover();
     contexte.clearRect(0, 0, canvas.width, canvas.height); 
     contexte.fillStyle = "#DEB887";
     contexte.fillRect(0, 0, canvas.width, canvas.height);
@@ -389,7 +388,6 @@ function keySprint(evenement) {
             back = new Image();
             back.src = "assets/images/interface/back.PNG";
 
-            //les fruits
             f1 = new Image();
             f1.src = "assets/images/fruits/bananes.png";
             f2 = new Image();
@@ -399,7 +397,7 @@ function keySprint(evenement) {
             f4 = new Image();
             f4.src = "assets/images/fruits/avoca.png";
             f5 = new Image();
-            f5.src = "assets/images/iruits/mango.png";
+            f5.src = "assets/images/fruits/mango.png";
 
             tour = 0;
             depalcei = 500;
@@ -426,7 +424,7 @@ function keySprint(evenement) {
             mmaj.innerHTML = banane;
             mmaj = document.getElementById("mangocounter");
             scoremaj = document.getElementById("valeurscore");
-
+            document.getElementById('colis').play();
             collisionbody = false;
             attenterand = 0;
             centi = 0;
