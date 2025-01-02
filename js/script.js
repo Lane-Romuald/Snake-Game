@@ -1,17 +1,15 @@
-/**
- * @author LANE Romuald 😎 <laneromuald@gmail.com>
- */
+
 
 window.onload = function() {
 
         canvas = document.getElementById("jardin");
         if (!canvas) {
-            alert("Impossible de récupérer le canvas");
+            alert("Unable to retrieve canvas");
             return;
         }
         contexte = canvas.getContext("2d");
         if (!contexte) {
-            alert("Impossible de récupérer le context du canvas");
+            alert("Unable to retrieve canvas context");
             return;
         }
         document.addEventListener("keydown", keySprint);
@@ -21,7 +19,7 @@ window.onload = function() {
         intervalID = setInterval(main, vitesse);
 
     }
-    //variables Globales
+   
 snakeheadx = 25;
 snakeheady = 25;
 fruitx = 250;
@@ -32,44 +30,36 @@ deplacey = 0;
 
 //head of snake
 serpent = new Image();
-serpent.src = "Images/Serpent/headd.png";
+serpent.src = "assets/images/snake/headd.png";
 corps = new Image();
-corps.src = "Images/Serpent/body.png";
+corps.src = "assets/images/serpent/body.png";
 back = new Image();
-back.src = "Images/Interface/back.png";
+back.src = "assets/images/interface/back.png";
 
-//les fruits
+//fruits
 f1 = new Image();
-f1.src = "Images/Fruits/bananes.png";
+f1.src = "assets/images/fruits/bananes.png";
 f2 = new Image();
-f2.src = "Images/Fruits/orange.png";
+f2.src = "assets/images/fruits/orange.png";
 f3 = new Image();
-f3.src = "Images/Fruits/lemon.png";
+f3.src = "assets/images/fruits/lemon.png";
 f4 = new Image();
-f4.src = "Images/Fruits/avoca.png";
+f4.src = "assets/images/fruits/avoca.png";
 f5 = new Image();
-f5.src = "Images/Fruits/mango.png";
+f5.src = "assets/images/fruits/mango.png";
 
-//A  présent  pour  plus  de  logique  ne  laissons  pas  le  serpent  faire  un  demi-tour  sur  lui-même la variable tour
+//A Now, for the sake of logic, let's not let the snake do a half-turn on itself the variable turn
 tour = 0;
 
-//depalcei
 depalcei = 500;
 
-//pause
 gamepause = false;
 
-//control snake move
 trace = [];
 tailleTrace = 3;
-// trace.push({snakeheadx:snakeheadx,snakeheady:snakeheady});
-// trace.push({x:snakeheadx,y:snakeheady});
-
-//tableau de fruits
 fruits = [f1, f2, f3, f4, f5];
 fruitsuivant = 3;
 
-//variable pour score
 score = 0;
 banane = 0;
 bmaj = document.getElementById("bananescounter");
@@ -86,7 +76,6 @@ scoremaj = document.getElementById("valeurscore");
 collisionbody = false;
 attenterand = 0;
 
-//la gestion du time
 centi = 0;
 mili = 0;
 sec = 0;
@@ -96,62 +85,48 @@ n = 3;
 startingMinutes = 3;
 go = startingMinutes * 60;
 afficher = n + ":" + m + "0";
-//document.getElementById("valeurTime").innerHTML = afficher;
 energie = 0;
 flou = 0;
 posx = 200;
 posy = 518;
 
 
-//fonction principale de notre jeu le main
+// main function
 function main() {
 
-    //le timer ce lance des lorsquons commence a jouer
-    //sablIterv=setInterval(sablier,1000/8);
-    //time();
+
 
     //Le snake se deplace 
     snakeheadx += deplacex * largeur;
     snakeheady += deplacey * hauteur;
 
-    //place au Game Over
+    // Game Over
     gameover();
-    contexte.clearRect(0, 0, canvas.width, canvas.height); // efface la zone de canvas
+    contexte.clearRect(0, 0, canvas.width, canvas.height); 
     contexte.fillStyle = "#DEB887";
     contexte.fillRect(0, 0, canvas.width, canvas.height);
-    // la longueur et la largeur de fillRect sont donnees en pixels
-    //fillRect permet de construire des rectangle plein
+
     contexte.strokeStyle = 'red';
-    //strokeRect permet de construire des contours
     contexte.strokeRect(0, 0, canvas.width, canvas.height)
     contexte.drawImage(back, 0, 0);
 
-    //le serpent et son corps
+
     for (var i = 0; i < trace.length; i++) {
-        //contexte.fillRect(trace[i].snakeheadx,trace[i].snakeheady,largeur,hauteur);
+       
         contexte.drawImage(corps, trace[i].snakeheadx, trace[i].snakeheady);
-        //if(trace[i].snakeheadx==snakeheadx && trace[i].snakeheady==snakeheady) {
-
-        //	tailleTrace = 3;
-        //}
-
+       
     }
-
     contexte.drawImage(serpent, snakeheadx, snakeheady);
-    //contexte.drawImage(serpent,snakeheadx-25, snakeheady-25);
-    //push() ajoute un ou plusieurs éléments à la fin d'un tableau et retourne la nouvelle taille du tableau.
     trace.push({ snakeheadx: snakeheadx, snakeheady: snakeheady });
+
     while (trace.length > tailleTrace) {
-        //shift() permet de retirer le premier élément d'un tableau et de renvoyer cet élément.
-        // Cette méthode modifie la longueur du tableau.
+       
         trace.shift();
 
     }
 
-    //collision du serpent avec lui meme
     if (trace.length > 3) {
         for (var jo = 0; jo < trace.length - 1; jo++) {
-            // la position lenngth - 1 est celle de la tête elle n'a pas besoin d'être inclut dans le test avec elle même!
             if ((trace[jo].snakeheadx == trace[trace.length - 1].snakeheadx) && (trace[jo].snakeheady == trace[trace.length - 1].snakeheady)) {
                 collisionbody = true;
                 gameover();
@@ -160,7 +135,6 @@ function main() {
         }
     }
 
-    // et si le serpent mange un fruit
     if (fruitx == snakeheadx && fruity == snakeheady) {
         document.getElementById('colis').play();
         energie++;
@@ -185,8 +159,8 @@ function main() {
             amaj.innerHTML = avoca;
         }
 
-        fruitsuivant = Math.trunc(Math.random() * 5); //on random pour l'indice du prochain fruit
-        //flou=2+Math.trunc(m/n);
+        fruitsuivant = Math.trunc(Math.random() * 5); 
+
         flou = 1 + 60 - m;
         score += flou;
         majScore(score);
@@ -194,7 +168,7 @@ function main() {
         n = 3;
         go = startingMinutes * 60;
         tailleTrace++;
-        // coordonnees fruits par random 
+
         fruitx = Math.round(Math.random() * (canvas.width - largeur) / largeur) * largeur;
         fruity = Math.round(Math.random() * (canvas.height - hauteur) / hauteur) * hauteur;
         for (var i = 0; i < trace.length; i++) {
@@ -206,12 +180,10 @@ function main() {
 
     }
 
-    //nous decidons qu'apres 100 secondes si le serpent n'a pqs encore consomme la pomme  on deplace sa position
     else {
         attenterand = attenterand + 2;
         if (attenterand > 100) {
             attenterand = 0;
-            // coordonnees fruits par random 
             fruitx = Math.round(Math.random() * (canvas.width - largeur) / largeur) * largeur;
             fruity = Math.round(Math.random() * (canvas.height - hauteur) / hauteur) * hauteur;
             for (var i = 0; i < trace.length; i++) {
@@ -220,11 +192,11 @@ function main() {
                     fruity = Math.round(Math.random() * (canvas.height - hauteur) / hauteur) * hauteur;
                 }
             }
-            fruitsuivant = Math.trunc(Math.random() * 5); //on random pour l'indice du prochain fruit
+            fruitsuivant = Math.trunc(Math.random() * 5); 
         }
 
     }
-    //probleme
+
     if (fruitx > 500) {
         fruitx = 250;
     }
@@ -250,8 +222,7 @@ function main() {
     contexte.strokeText('TIME: ' + n + ':' + m, posx, posy);
     contexte.fillText('TIME: ' + n + ':' + m, posx, posy);
 
-    //acceleration
-    //apres 6 fruits conseomme le jeux accelere
+
     if (energie > 3) {
         energie = 0;
 
@@ -263,7 +234,7 @@ function main() {
 
 }
 
-//fonction pour time
+//time function
 function sablier() {
     if (go == 0) {
         go = startingMinutes * 60;
@@ -296,12 +267,10 @@ function time() {
         n = sec_;
         mili = 0;
     } else { afficher = n + ":" + m; }
-    //document.getElementById("valeurTime").innerHTML = afficher;
-
-    // reglage = window.setTimeout("time();",1000);
+    
 }
 
-// fonction Gameover
+
 function gameover() {
     if (snakeheadx < -1 || snakeheadx > depalcei + 1 || snakeheady < -1 || snakeheady > depalcei - 1 || collisionbody == true) {
 
@@ -325,40 +294,40 @@ function gameover() {
     }
 }
 
-//fonction pour mettre a jours le score
+
 function majScore(s) {
     scoremaj.innerHTML = s;
 }
 
 function randfruits() {
     if (fruitsuivant == 0) {
-        f1.src = "Images/Serpent/headd.png";
+        f1.src = "assets/images/snake/headd.png";
 
         fruitsuivant++;
     }
     if (fruitsuivant == 1) {
-        f1.src = "Images/Serpent/headb.png";
+        f1.src = "assets/images/snake/headb.png";
 
         fruitsuivant++;
     }
     if (fruitsuivant == 2) {
-        f1.src = "Images/Serpent/headh.png";
+        f1.src = "assets/images/snake/headh.png";
 
         fruitsuivant++;
     }
     if (fruitsuivant == 3) {
-        f1.src = "Images/Serpent/headg.png";
+        f1.src = "assets/images/snake/headg.png";
 
         fruitsuivant++;
     } else {
         fruitsuivant = 0;
-        f1.src = "Images/Serpent/headd.png";
+        f1.src = "assets/images/snake/headd.png";
 
 
     }
 
 }
-//la fonction pause()
+
 function pause() {
 
 
@@ -379,50 +348,47 @@ function pause() {
 
         gamepause = false;
     }
-    //clearTimeout(intervalID);
 }
 
-// la fonction keySprint() // deplacement du snake
+
 function keySprint(evenement) {
     sableintervalID = setInterval(sablier, 1000 / 2);
-    //sablier();
+ 
     switch (evenement.keyCode) {
-        case 37: //37 code clavier de la touche de direction gauche
-            //if(tour==39){break;}
+        case 37: 
             deplacex = -1;
             deplacey = 0;
-            serpent.src = "Images/Serpent/headg.png";
+            serpent.src = "assets/images/snake/headg.png";
             tour = evenement.keyCode;
             break;
 
-        case 38: // 38 code clavier de la touche de direction haut
+        case 38: 
             if (tour == 40) { break; }
             deplacex = 0;
             deplacey = -1;
-            serpent.src = "Images/Serpent/headh.png";
+            serpent.src = "assets/images/snake/headh.png";
             tour = evenement.keyCode;
             break;
 
-        case 39: //39 code clavier de la touche de direction droite
-            //if(tour==37){break;}
+        case 39: 
             deplacex = 1;
             deplacey = 0;
-            serpent.src = "Images/Serpent/headd.png";
+            serpent.src = "assets/images/snake/headd.png";
             tour = evenement.keyCode;
             break;
 
-        case 40: // 40 code clavier de la touche de direction  bas
+        case 40: 
             if (tour == 38) { break; }
             deplacex = 0;
             deplacey = 1;
-            serpent.src = "Images/Serpent/headb.png";
+            serpent.src = "assets/images/snake/headb.png";
             tour = evenement.keyCode;
             break;
 
-        case 82: // 82 code clavier de la touche r/R , pour restart, reintialiser tous
+        case 82: 
             denov = 5;
             vitesse = 1000 / denov;
-            //variable Glo
+       
             snakeheadx = 25;
             snakeheady = 25;
             fruitx = 250;
@@ -430,41 +396,33 @@ function keySprint(evenement) {
             largeur = hauteur = 25;
             deplacex = 0;
             deplacey = 0;
-            //head of snake
+        
             serpent = new Image();
-            serpent.src = "Images/Serpent/headd.png";
+            serpent.src = "assets/images/snake/headd.png";
             corps = new Image();
-            corps.src = "Images/Serpent/body.png";
+            corps.src = "assets/images/snake/body.png";
             back = new Image();
-            back.src = "Images/Interface/back.png";
+            back.src = "assets/images/interface/back.png";
 
             //les fruits
             f1 = new Image();
-            f1.src = "Images/Fruits/bananes.png";
+            f1.src = "assets/images/fruits/bananes.png";
             f2 = new Image();
-            f2.src = "Images/Fruits/orange.png";
+            f2.src = "assets/images/fruits/orange.png";
             f3 = new Image();
-            f3.src = "Images/Fruits/lemon.png";
+            f3.src = "assets/images/fruits/lemon.png";
             f4 = new Image();
-            f4.src = "Images/Fruits/avoca.png";
+            f4.src = "assets/images/fruits/avoca.png";
             f5 = new Image();
-            f5.src = "Images/Fruits/mango.png";
-            //A  présent  pour  plus  de  logique  ne  laissons  pas  le  serpent  faire  un  demi-tour  sur  lui-même la variable tour
+            f5.src = "assets/images/iruits/mango.png";
+
             tour = 0;
-            //depalcei
             depalcei = 500;
-            //pause
             gamepause = false;
-            //control snake move
             trace = [];
             tailleTrace = 3;
-            // trace.push({snakeheadx:snakeheadx,snakeheady:snakeheady});
-            // trace.push({x:snakeheadx,y:snakeheady});
-            //tableau de fruits
             fruits = [f1, f2, f3, f4, f5];
             fruitsuivant = 3;
-
-            //var pour score
             score = 0;
             majScore(score);
             banane = 0;
@@ -486,7 +444,6 @@ function keySprint(evenement) {
 
             collisionbody = false;
             attenterand = 0;
-            //le time
             centi = 0;
             mili = 0;
             sec = 0;
@@ -496,16 +453,13 @@ function keySprint(evenement) {
             startingMinutes = 3;
             go = startingMinutes * 60;
             afficher = n + ":" + m + "0";
-            //document.getElementById("valeurTime").innerHTML = afficher;
             energie = 0;
             flou = 0;
             posx = 200;
             posy = 518;
-            //sabler
 
             break;
-        case 80: //  code clavier de la touche p/P, pour pause
-            //intervalID=clearInterval(intervalID);
+        case 80: 
 
             pause();
             break;
@@ -513,6 +467,3 @@ function keySprint(evenement) {
     }
 
 }
-/**
- * @author LANE Romuald 😎 <laneromuald@gmail.com>
- */
