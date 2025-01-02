@@ -45,7 +45,7 @@ This repository contains the source code for a classic Snake game implemented in
 ## File Structure
 ```
 .
-├── game.html      # Main HTML file
+├── index.html      # Main HTML file
 ├── css/       # Styles files folder
 ├── js/       # Game logic file folder
 ├── assets/         # Game assets (images, sounds, etc.)
