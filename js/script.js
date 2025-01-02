@@ -93,9 +93,6 @@ posy = 518;
 
 // main function
 function main() {
-
-
-
     //Le snake se deplace 
     snakeheadx += deplacex * largeur;
     snakeheady += deplacey * hauteur;

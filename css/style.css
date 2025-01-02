@@ -2,16 +2,14 @@ canvas {
 	padding :0;
 	margin: auto; 
 	display: block;
-	width: 525px;
-	height: 525px;
+	width: 515px;
+	height: 515px;
 	position: relative;
 	top:10px;
 	bottom:0;
 	left:30px;
 	right:0;
 	border:solid 2px black;
-
-	
 }
 
 #b{
@@ -21,9 +19,9 @@ canvas {
 	position: relative;
 }
 #pauserestart{
-	top: 610px;
-	left:451px;
-	position:absolute;
+	top: 15px;
+	left:30px;
+	position:relative;
 	width: 525px;
 	height: 25px;
 	display: block;
@@ -55,7 +53,7 @@ canvas {
 }
 #valeurTime{
 	top: 100px;
-	left:245px;
+	left:215px;
 	position:absolute;
 	font-size : 10px;
 }
