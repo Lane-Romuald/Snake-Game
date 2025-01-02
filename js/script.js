@@ -34,7 +34,7 @@ serpent.src = "assets/images/snake/headd.png";
 corps = new Image();
 corps.src = "assets/images/serpent/body.png";
 back = new Image();
-back.src = "assets/images/interface/back.png";
+back.src = "assets/images/interface/back.PNG";
 
 //fruits
 f1 = new Image();
@@ -85,7 +85,7 @@ n = 3;
 startingMinutes = 3;
 go = startingMinutes * 60;
 afficher = n + ":" + m + "0";
-energie = 0;
+energie = 2;
 flou = 0;
 posx = 200;
 posy = 518;
@@ -98,7 +98,7 @@ function main() {
     snakeheady += deplacey * hauteur;
 
     // Game Over
-    gameover();
+    //gameover();
     contexte.clearRect(0, 0, canvas.width, canvas.height); 
     contexte.fillStyle = "#DEB887";
     contexte.fillRect(0, 0, canvas.width, canvas.height);
@@ -208,19 +208,7 @@ function main() {
     }
     contexte.drawImage(fruits[fruitsuivant], fruitx, fruity);
 
-    //Le Chono;
-    contexte.fillStyle = '#2c3e50';
-    contexte.fillRect(0, 500, 525, 25);
-    contexte.font = 'bold 20px sans-serif';
-    contexte.strokeStyle = '#2c3e50';
-    contexte.fillStyle = 'white';
-    contexte.textBaseline = 'middle';
-
-    contexte.strokeText('TIME: ' + n + ':' + m, posx, posy);
-    contexte.fillText('TIME: ' + n + ':' + m, posx, posy);
-
-
-    if (energie > 3) {
+    if (energie > 1) {
         energie = 0;
 
         clearInterval(intervalID);
@@ -399,7 +387,7 @@ function keySprint(evenement) {
             corps = new Image();
             corps.src = "assets/images/snake/body.png";
             back = new Image();
-            back.src = "assets/images/interface/back.png";
+            back.src = "assets/images/interface/back.PNG";
 
             //les fruits
             f1 = new Image();

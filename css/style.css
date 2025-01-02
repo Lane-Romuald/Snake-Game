@@ -2,8 +2,8 @@ canvas {
 	padding :0;
 	margin: auto; 
 	display: block;
-	width: 515px;
-	height: 515px;
+	width: 525px;
+	height: 525px;
 	position: relative;
 	top:10px;
 	bottom:0;
@@ -20,7 +20,7 @@ canvas {
 }
 #pauserestart{
 	top: 15px;
-	left:30px;
+	left:38px;
 	position:relative;
 	width: 525px;
 	height: 25px;
