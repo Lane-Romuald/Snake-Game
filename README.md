@@ -13,11 +13,13 @@ This repository contains the source code for a classic Snake game implemented in
 - **Fruit Consumption**: The snake grows by consuming fruits.
 - **Score Display**: The total score is displayed during gameplay.
 - **Fruit Counter**: Tracks and displays the number of fruits consumed by type.
+- **Random positioning of fruit**
+- **Background music**: There's a background song when the serpet swallows a piece of fruit
 
 ## Getting Started
 
 ### Prerequisites
-- A modern web browser.
+- A modern web browser .
 - [Git](https://git-scm.com/) (to clone the repository).
 
 ### Installation
@@ -32,24 +34,24 @@ This repository contains the source code for a classic Snake game implemented in
     cd snake-game
     ```
 
-3. Open `game.html` in your browser to play the game.
+3. Open `game.html` in your browser (preferably Google Chrome, Mozilla Firefox) to play the game.
 
-### Live Demo
-Include a link to a live version of your game hosted on GitHub Pages or another platform if applicable.
 
 ## How to Play
 - Use the arrow keys (or swipe on mobile) to control the snake.
 - Avoid colliding with the walls or yourself.
-- Eat the food to grow the snake and increase your score.
+- Eat the fruits to grow the snake and increase your score.
 
 ## File Structure
 ```
 .
 ├── game.html      # Main HTML file
-├── Css/       # Styles files folder
-├── Js/       # Game logic file folder
+├── css/       # Styles files folder
+├── js/       # Game logic file folder
 ├── assets/         # Game assets (images, sounds, etc.)
+├── LICENCE         # Licence of Projet
 └── README.md       # Project documentation
+
 ```
 
 ## Contributing
