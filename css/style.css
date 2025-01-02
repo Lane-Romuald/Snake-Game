@@ -1,6 +1,6 @@
 canvas {
-	padding :0;/*propiete CSS qui indique la marge interieur d'un bloc*/
-	margin: auto; /*propiete CSS qui indique la marge exterieur d'un bloc*/
+	padding :0;
+	margin: auto; 
 	display: block;
 	width: 525px;
 	height: 525px;
